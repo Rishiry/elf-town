@@ -1,0 +1,36 @@
+.underline {
+    background-size: 100% 15%;
+    background-repeat: repeat-x;
+    background-position: left 0 bottom 0;
+}
+
+.weave-green {
+    background-image: repeating-linear-gradient(135deg, #68D391 0px, #68D391 7px,transparent 7px, transparent 14px),repeating-linear-gradient(45deg, #48BB78 0px, #38A169 7px,transparent 7px, transparent 14px),repeating-linear-gradient(135deg, #FFF 0px, #FFF 7px,#FFF 7px, #FFF 14px);
+}
+
+.tapered-orange {
+    background-image: linear-gradient(181deg, #F6AD55 0%, #ED8936 50%, transparent 54%, transparent 100%);
+}
+
+.purple-orange {
+    background-image: linear-gradient(90deg, rgb(246, 137, 24) 0%, rgb(246, 137, 24) 31%,rgb(174, 62, 159) 31%, rgb(174, 62, 159) 42%,rgb(210, 100, 92) 42%, rgb(210, 100, 92) 49%,rgb(138, 25, 227) 49%, rgb(138, 25, 227) 100%);
+}
+
+.graph-paper {
+    background-image: repeating-linear-gradient(0deg, hsl(144,66%,90%) 0px, hsl(144,66%,90%) 2px,transparent 2px, transparent 7px),repeating-linear-gradient(90deg, hsl(144,66%,90%) 0px, hsl(144,66%,90%) 2px,transparent 2px, transparent 7px),linear-gradient(90deg, hsl(218,79%,50%),hsl(218,79%,50%));
+}
+
+.rainbow-energetic {
+    background-image: repeating-linear-gradient(135deg, hsl(46,80%,67%) 0px, hsl(46,80%,67%) 14px,hsl(91,80%,67%) 14px, hsl(91,80%,67%) 28px,hsl(136,80%,67%) 28px, hsl(136,80%,67%) 42px,hsl(181,80%,67%) 42px, hsl(181,80%,67%) 56px,hsl(226,80%,67%) 56px, hsl(226,80%,67%) 70px,hsl(271,80%,67%) 70px, hsl(271,80%,67%) 84px,hsl(316,80%,67%) 84px, hsl(316,80%,67%) 98px,hsl(1,80%,67%) 98px, hsl(1,80%,67%) 112px);
+}
+
+.checks-red {
+    background-image: repeating-linear-gradient(90deg, rgba(246, 7, 3,0.5) 0px, rgba(246, 7, 3,0.5) 30px,transparent 30px, transparent 60px),repeating-linear-gradient(0deg, rgba(246, 7, 3,0.5) 0px, rgba(246, 7, 3,0.5) 30px,transparent 30px, transparent 60px),linear-gradient(90deg, #ffffff,#ffffff);
+}
+
+.radial-blue {
+    background-image: radial-gradient(circle at bottom right, rgb(3, 147, 184) 0%, rgb(3, 147, 184) 4%,rgb(15, 135, 193) 4%, rgb(15, 135, 193) 8%,rgb(28, 122, 201) 8%, rgb(28, 122, 201) 12%,rgb(40, 110, 210) 12%, rgb(40, 110, 210) 16%,rgb(53, 97, 219) 16%, rgb(53, 97, 219) 20%,rgb(65, 85, 228) 20%, rgb(65, 85, 228) 24%,rgb(78, 72, 236) 24%, rgb(78, 72, 236) 28%,rgb(90, 60, 245) 28%, rgb(90, 60, 245) 100%);
+}
+
+.stripe-red {
+    background-image: radial-gradient(circle at center center, rgb(252, 155, 156),rgb(237, 122, 126),rgb(221, 89, 96),rgb(206, 56, 65),rgb(190, 23, 35));}

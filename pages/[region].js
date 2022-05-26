@@ -10,16 +10,19 @@ import Christmas from "sections/home/christmas";
 import Featured from "sections/home/featured";
 import Welcome from "sections/home/welcome";
 
-export default function Home({region, featured_collections, christmas_collections}) {
+export default function Home({activeRegion, region, featured_collections, christmas_collections}) {
+
     const elf = useElf();
     const router = useRouter()
 
     useEffect(()=>{
+
         if(elf.session.activeRegion != null){
 
             router.push(`/${elf.session.activeRegion}`)
         }
     }, [elf.session.activeRegion])
+
     return (
         <Box w="100%">
             <Navbar/>
@@ -30,14 +33,14 @@ export default function Home({region, featured_collections, christmas_collection
     )
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({params}) {
 
     const fetched = await directus
         .items('regions')
         .readByQuery({
             filter: {
-                "default": {
-                    "_eq": true
+                "code": {
+                    "_eq": params.region
                 }
             },
             fields: '*.*.*'
@@ -66,9 +69,28 @@ export async function getStaticProps() {
 
     return {
         props: {
+            activeRegion: params.region,
             region: region,
             featured_collections: featured_collections,
             christmas_collections: christmas_collections.data
         }
     }
+}
+
+export async function getStaticPaths({region}) {
+
+    const fetched = await directus
+        .items('regions')
+        .readByQuery()
+
+
+        
+       
+
+    return {
+        paths: fetched
+        .data.map(r=>{return {params: {region: r.code}}}),
+        fallback: false
+    }
+
 }
