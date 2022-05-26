@@ -1,12 +1,18 @@
-import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+    Flex,
+    Icon,
+    useColorModeValue,
+    Text,
+    VStack,
+    Box
+} from "@chakra-ui/react";
+import BounceWrapper from "components/bounceWrapper/bounceWrapper";
+import Link from "next/link";
 
-export default function Search() {
+export default function Logo() {
     return (
+
         <Flex
-        display={{
-            base: 'none',
-            md: 'flex'
-        }}
             background={useColorModeValue("linear-gradient(112.83deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 0.8" +
                 ") 110.84%)",
         "linear-gradient(112.83deg, rgba(255, 255, 255, 0.21) 0%, rgba(255, 255, 255, 0) " +
@@ -16,10 +22,9 @@ export default function Search() {
             filter={useColorModeValue("none", "drop-shadow(0px 7px 23px rgba(0, 0, 0, 0.05))")}
             backdropFilter="blur(21px)"
             borderRadius="15px"
-            px={"22px"}
+            px={{base: "44px", md:"22px", lg:"44px"}}
             py="22px"
             mx="auto"
-            width={{md: "40%", lg: "40%"}}
             alignItems="center"
             height={"100%"}>
             <Flex
@@ -28,12 +33,21 @@ export default function Search() {
                 base: "start",
                 lg: "space-between"
             }}>
-
-                <Text fontSize="sm" color={useColorModeValue("gray.700", "gray.200")}>
-                    Search
-                </Text>
+                <Link
+                    href={`${process.env.PUBLIC_URL}/`}
+                    target="_blank"
+                    display="flex"
+                    lineHeight="100%"
+                    justifyContent="center"
+                    alignItems="center"
+                    color={useColorModeValue("gray.700", "gray.200")}>
+                    <Text fontSize="sm" mt="3px" fontWeight="bold">
+                        ELF TOWN
+                    </Text>
+                </Link>
 
             </Flex>
         </Flex>
+
     )
 }

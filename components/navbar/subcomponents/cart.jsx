@@ -11,17 +11,24 @@ import {
     useDisclosure
 } from "@chakra-ui/react";
 import BounceWrapper from "components/bounceWrapper/bounceWrapper";
+import {useElf} from "lib/elf";
 
 import {IoCart} from 'react-icons/io5'
+import CartOverlay from "sections/cart/cartOverlay";
 
 export default function Cart() {
+
+    const elf = useElf()
+
     return (
+
         <Flex
-            height={"68px"}
+            height={"100%"}
             overflow='visable'
             width="max-content"
             mx="auto"
             onMouseLeave={null}>
+
             <VStack width={'100%'} spacing='0'>
 
                 <BounceWrapper>
@@ -38,7 +45,8 @@ export default function Cart() {
                         borderRadius="15px"
                         px="16px"
                         py="16px"
-                        cursor={"pointer"}>
+                        cursor={"pointer"}
+                        onClick={() => {elf.session.setCartOpen(!elf.session.cartOpen)}}>
                         <Icon
                             as={IoCart}
                             color={useColorModeValue("gray.700", "gray.200")}
@@ -47,9 +55,8 @@ export default function Cart() {
                             fontWeight="2000"/>
                     </Flex>
                 </BounceWrapper>
-
+                <CartOverlay />
             </VStack>
-
         </Flex>
     )
 }

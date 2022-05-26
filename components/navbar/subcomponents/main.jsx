@@ -52,24 +52,6 @@ function Item() {
     )
 }
 
-function Brand() {
-    return (
-        <Link
-            href={`${process.env.PUBLIC_URL}/#/`}
-            target="_blank"
-            display="flex"
-            lineHeight="100%"
-            fontWeight="bold"
-            justifyContent="center"
-            alignItems="center"
-            color={useColorModeValue("gray.700", "gray.200")}>
-            <Text fontSize="sm" mt="3px">
-                ELF TOWN
-            </Text>
-        </Link>
-    )
-}
-
 export default function MainNav() {
     return (
         <Flex
@@ -82,18 +64,19 @@ export default function MainNav() {
             filter={useColorModeValue("none", "drop-shadow(0px 7px 23px rgba(0, 0, 0, 0.05))")}
             backdropFilter="blur(21px)"
             borderRadius="15px"
-            px="16px"
+            px="44px"
             py="22px"
             mx="auto"
-            width="50%"
-            alignItems="center">
+            alignItems="center"
+            display={{base: "none", md: "none", lg: "none", xl: "flex"}}
+            height={"100%"}
+>
             <Flex
                 w="100%"
                 justifyContent={{
                 base: "start",
                 lg: "space-between"
             }}>
-                <Brand/>
                 <Box
                     ms={{
                     base: "auto",

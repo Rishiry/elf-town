@@ -77,14 +77,12 @@ const ActiveRegionIcon = ({regions, activeRegion, listTrigger}) => {
                 listTrigger.isOpen
                     ? listTrigger.onClose()
                     : listTrigger.onOpen()
-            }}
-                cursor={"pointer"}>
+            }}>
 
                 <Image
                     src={constructImageURL(regions.filter(e => e.code == activeRegion)[0].flag)}
                     width={"30px"}
-                    height={"30px"}
-                    alt={activeRegion}/>
+                    height={"30px"} alt={activeRegion}/>
             </Flex>
         </BounceWrapper>
 
@@ -96,10 +94,11 @@ export default function RegionSwitch(props) {
 
     const {isOpen, onOpen, onClose} = useDisclosure()
 
+
     return (
         <Flex
-            height={"68px"}
-            overflow='visable'
+        height={"100%"}
+        overflow='visable'
             width="max-content"
             mx="auto"
             onMouseLeave={onClose}>
