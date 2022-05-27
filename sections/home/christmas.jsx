@@ -104,7 +104,7 @@ export default function Christmas({collections}) {
                         md: "10vh"
                     }}>
 
-                        {collections.map(c => <SmallCatalogCard name={c.name} image={constructImageURL(c.main_image)}/>)}
+                        {collections.map(c => <SmallCatalogCard key={c.id} name={c.name} image={constructImageURL(c.main_image)}/>)}
 
                     </SimpleGrid>
 

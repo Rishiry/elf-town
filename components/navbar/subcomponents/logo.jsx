@@ -34,7 +34,7 @@ export default function Logo() {
                 lg: "space-between"
             }}>
                 <Link
-                    href={`${process.env.PUBLIC_URL}/`}
+                    href={`/`}
                     target="_blank"
                     display="flex"
                     lineHeight="100%"

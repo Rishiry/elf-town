@@ -7,9 +7,12 @@ export default function Featured({collections}) {
     return (
         <Box w="100%">
             {collections.map((c, i) => <CatalogCard
+            key={c.id}
                 title={c.name}
-                image={constructImageURL(c.main_image)}
+                products={c.products}
+                image={constructImageURL(c.main_image.id)}
                 underline={c.underline}
+                colors={c.colors.map(c => c.color)}
                 order={i % 2 == 0
                 ? -1
                 : 1}/>)}

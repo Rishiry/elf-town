@@ -43,7 +43,7 @@ export async function getStaticProps({params}) {
                     "_eq": params.region
                 }
             },
-            fields: '*.*.*'
+            fields: '*.*.*.*.*'
         })
 
     const region = fetched

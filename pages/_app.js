@@ -23,6 +23,7 @@ MyApp.getInitialProps = async() => {
     return {
       staticContext: {
           regions: regions.data,
+          defaultRegion: regions.data.filter(r => r.default)[0].code
         }
     }
 }

@@ -2,9 +2,9 @@ import {Box} from "@chakra-ui/react";
 
 import Navbar from "components/navbar/navbar";
 import {directus} from "lib/directus";
-import { useElf } from "lib/elf";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import {useElf} from "lib/elf";
+import {useRouter} from "next/router";
+import {useEffect} from "react";
 import Christmas from "sections/home/christmas";
 
 import Featured from "sections/home/featured";
@@ -14,12 +14,6 @@ export default function Home({region, featured_collections, christmas_collection
     const elf = useElf();
     const router = useRouter()
 
-    useEffect(()=>{
-        if(elf.session.activeRegion != null){
-
-            router.push(`/${elf.session.activeRegion}`)
-        }
-    }, [elf.session.activeRegion])
     return (
         <Box w="100%">
             <Navbar/>
@@ -40,7 +34,7 @@ export async function getStaticProps() {
                     "_eq": true
                 }
             },
-            fields: '*.*.*'
+            fields: '*.*.*.*.*'
         })
 
     const region = fetched

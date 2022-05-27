@@ -26,23 +26,44 @@ export default function Product({product}) {
                 base: "column-reverse",
                 md: "row"
             }}>
-                <Details product={product} />
-                <Pictures product={product} />
+                <Details product={product}/>
+                <Pictures product={product}/>
             </Flex>
 
         </div>
-        );
-        
+    );
+
 };
-        
-        
-export async function getStaticProps() {const fetched = await directus
-            .items('products')
-            .readByQuery({fields: '*.*'})
+
+export async function getStaticProps({params}) {
+    const fetched = await directus
+        .items('products')
+        .readByQuery({
+            fields: '*.*',
+            filter: {
+                "slug": {
+                    "_eq": params.slug
+                }
+            }
+        })
+
+    return {
+        props: {
+            product: fetched.data[0]
+        }
+    }
+}
+
+export async function getStaticPaths({slug}) {
+
+    const fetched = await directus
+        .items('products')
+        .readByQuery({fields: 'slug'})
 
         return {
-            props: {
-                product: fetched.data[0]
-            }
+            paths: fetched
+            .data.map(r=>{return {params: r}}),
+            fallback: false
         }
+
 }

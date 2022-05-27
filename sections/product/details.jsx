@@ -87,17 +87,17 @@ export default function Details({product}) {
 
                 </Box>
 
-                <HStack pt={'2.5vh'}>
+                <HStack pt={'2.5vh'} spacing="2.5vw">
                     <NumberInput maxW={"120px"} defaultValue={1} min={1}>
                         <NumberInputField
                             py={"30px"}
                             rounded={"20px"}
                             color={useColorModeValue("gray.700", "white")}
-                            fontSize="3xl"
-                            fontWeight="bold"/>
+                            fontSize="2xl"
+                            fontWeight="bold" textAlign={"center"}/>
                         <NumberInputStepper
                             color={useColorModeValue("gray.700", "white")}
-                            fontSize="3xl"
+                            fontSize="2xl"
                             fontWeight="bold">
                             <NumberIncrementStepper/>
                             <NumberDecrementStepper/>
