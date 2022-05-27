@@ -1,4 +1,4 @@
-import { Box, Center, Image, SimpleGrid, Stack, useColorModeValue, VStack } from "@chakra-ui/react";
+import { Box, Center, Flex, Image, SimpleGrid, Spacer, Stack, useColorModeValue, VStack } from "@chakra-ui/react";
 import BounceWrapper from "components/bounceWrapper/bounceWrapper";
 import { constructImageURL } from "lib/helper";
 import { useState } from "react";
@@ -35,17 +35,19 @@ export default function Pictures({product}) {
                     alt="Product Image"
                     borderRadius="15px"/>
     
-            <Stack direction="row" spacing="2.5vw" mx="auto">
     
-                <SimpleGrid
+                <Flex
+                justifyContent={"center"}
+                alignContent={"center"}
                     columns={{
                     base: 4,
                     md: 4
                 }}
-                    spacing={{
-                    base: "5vw",
+                    gap={{
+                    base: "2.5vw",
                     md: "2.5vw"
-                }}>
+                }}
+                flexShrink={0}>
                     {images.map((e) => <BounceWrapper key={e}>
                         <Box
                             w={{
@@ -68,8 +70,7 @@ export default function Pictures({product}) {
                         </Box>
                     </BounceWrapper>)}
     
-                </SimpleGrid>
-            </Stack>
+                </Flex>
     
         </VStack> </Center> 
     )

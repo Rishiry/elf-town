@@ -46,15 +46,16 @@ export default function FreeDeliveryCard() {
                     }}
                         textTransform="uppercase"
                         textAlign={"center"}>
-                        {elf
-                            .static
-                            .regions
-                            .filter(r => r.code == elf.session.activeRegion)[0]
-                            .currency_symbol}{elf
-                                .static
-                                .regions
-                                .filter(r => r.code == elf.session.activeRegion)[0]
-                                .free_shipping_amount}
+
+                        {elf.session.activeRegionInfo
+                            ? <> {
+                                elf.session.activeRegionInfo.currency_symbol
+                            }
+                        {
+                            elf.session.activeRegionInfo.free_shipping_amount
+                        } < />:<></ >
+}
+
                     </Text>
 
                 </VStack>

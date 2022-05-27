@@ -19,10 +19,20 @@ export default function Christmas({collections}) {
             base: 1,
             md: 2
         }}
-            spacing='0'>
+            spacing={{
+            base: '5vh',
+            md: '0'
+        }}
+            pt={{
+            base: "5vh",
+            md: 0
+        }}>
 
-            <Center height="100%">
+            <Center
+                height="100%"
+              >
                 <Center
+                    w={"80%"}
                     bgImage={constructImageURL('633efbef-eb03-49f7-a91a-1425eb32709e')}
                     bgPosition="50%"
                     bgSize="cover"
@@ -30,7 +40,10 @@ export default function Christmas({collections}) {
                     base: "2.5vw",
                     md: "5vw"
                 }}
-                    height={"80vh"}
+                    height={{
+                    base: "50vh",
+                    lg: "80vh"
+                }}
                     rounded="20px">
                     <VStack>
                         <Badge
@@ -47,7 +60,7 @@ export default function Christmas({collections}) {
                                 Signature Collection
                             </Text>
                         </Badge>
-                        <Text color="#fff" fontSize="6xl" fontWeight="bold" mb="5vh" align={"center"}>
+                        <Text color="#fff" fontSize={{base: "2xl", lg: "6xl"}} fontWeight="bold" mb="5vh" align={"center"}>
                             CLASSIC<br/>CHRISTMAS
                         </Text>
                         <Button
@@ -95,16 +108,18 @@ export default function Christmas({collections}) {
                     <SimpleGrid
                         columns={{
                         base: 1,
-                        md: 2
+                        lg: 2
                     }}
                         width="100%"
-                        gap={"10vh"}
+                        gap={{base: '2vh', lg: "10vh"}}
                         px={{
                         base: "2.5vw",
                         md: "10vh"
                     }}>
-
-                        {collections.map(c => <SmallCatalogCard key={c.id} name={c.name} image={constructImageURL(c.main_image)}/>)}
+                        {collections.map(c => <SmallCatalogCard
+                            key={c.id}
+                            name={c.name}
+                            image={constructImageURL(c.main_image)}/>)}
 
                     </SimpleGrid>
 

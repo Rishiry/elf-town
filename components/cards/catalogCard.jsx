@@ -3,68 +3,27 @@ import {
     Text,
     useColorModeValue,
     Flex,
-    VStack,
     Image,
     Center,
-    HStack,
-    SimpleGrid,
-    Button,
-    Spacer
+    Spacer,
+    HStack
 } from "@chakra-ui/react";
 import BounceWrapper from "components/bounceWrapper/bounceWrapper";
-import {motion} from "framer-motion";
-import {constructImageURL} from "lib/helper";
-import Link from "next/link";
+import Product from "./productCard";
 
-function Product({color, product}) {
+function Category({title, background, image}) {
     return (
-        <Center>
-            <Link href={`/product/${product.slug}`}>
-                <Box
-                    height={"55vh"}
-                    width={"100%"}
-                    _hover={{
-                    borderWidth: '2px',
-                    borderColor: `${color}.200`,
-                    borderRadius: "20px",
-                    cursor: 'pointer',
-                    transition: 'all 0.3s'
-                }}>
-                    <VStack width={"100%"} height={'100%'} bg="white" rounded={"20px"} py="5%">
-                        <Image
-                            src={constructImageURL(product.display_image)}
-                            objectFit={'cover'}
-                            width={'90%'}
-                            height="55%"
-                            rounded={"20px"}/>
-                        <Spacer/>
-                        <Text fontWeight={"bold"} fontSize={'xl'} textAlign={'center'} px="2vw">{product.title}</Text>
-                        <Spacer/>
-                        <Center
-                            variant="no-hover"
-                            rounded={"20px"}
-                            p={"10px"}
-                            bg={useColorModeValue("gray.50", "gray.700")}
-                            w='90%'
-                            h="60px"
-                            fontSize="md"
-                            fontWeight="extrabold">
-                            $ 10.00
-                        </Center>
-                    </VStack>
+        <Center width={{
+            base: '90vw',
+            lg: "20vw"
+        }}>
 
-                </Box>
-            </Link>
-        </Center>
-    )
-
-}
-
-function Category({title, underline, image}) {
-    return (
-        <Center>
-
-            <Box height={"55vh"} width={"100%"}>
+            <Box
+                height={{
+                lg: "55vh",
+                base: 'fit-content',
+                md: 'fit-content'
+            }}>
                 <Flex
                     flexDirection={"column"}
                     width={"100%"}
@@ -82,7 +41,11 @@ function Category({title, underline, image}) {
                         m={0}
                         p={0}
                         casing="uppercase">
-                        <span className={`underline ${underline}`}>{title}<br/>COLLECTION</span>
+                        <span
+                            className={`underline`}
+                            style={{
+                            'background-image': background
+                        }}>{title}<br/>COLLECTION</span>
                     </Text>
                     <Spacer/>
                     <Image
@@ -94,12 +57,20 @@ function Category({title, underline, image}) {
                     }}
                         objectFit='contain'/>
                     <Spacer/>
-                    <Center bg='white' width={"100%"} height="10vh" rounded={"20px"}>
 
-                        <Text fontWeight={"bold"} fontSize={'xl'} textAlign={'center'}>View More</Text>
+                    <Box width={"100%"} height="10vh">
+                        <BounceWrapper>
+                            <Center
+                                bg='white'
+                                rounded={"20px"}
+                                borderRadius="20px"
+                                py="2.5vh"
+                                cursor={'pointer'}>
+                                <Text fontWeight={"bold"} fontSize={'xl'} textAlign={'center'}>View More</Text>
 
-                    </Center>
-
+                            </Center>
+                        </BounceWrapper>
+                    </Box>
                 </Flex>
             </Box>
 
@@ -107,20 +78,13 @@ function Category({title, underline, image}) {
     )
 }
 
-export default function CatalogCard({
-    title,
-    image,
-    order,
-    underline,
-    colors,
-    products
-}) {
+export default function CatalogCard({title, image, order, background, products}) {
 
     return (
         <Box
-            width="100%"
+            width="100vw"
             px={{
-            base: "2.5vw",
+            base: "0",
             md: "5vw"
         }}
             my="5vw">
@@ -128,16 +92,24 @@ export default function CatalogCard({
                 bg={useColorModeValue("gray.50", "gray.700")}
                 rounded="20px"
                 height={{
-                base: "max-content",
-                md: "65vh"
+                    base: "max-content",
+                    md: "max-content",
+                    lg: "65vh"
+            }}
+                flexWrap={{
+                base: "nowrap",
+                lg: "nowrap",
+                md: "wrap-reverse"
+            }}
+                gap={"2.5vw"}
+                py={{
+                base: "5vh",
+                md: "5vh",
+                lg: 0
             }}
                 px={{
                 base: 0,
-                lg: "5vh"
-            }}
-                py={{
-                base: "5vh",
-                md: 0
+                md: '2.5vw'
             }}
                 flexDirection={order == -1
                 ? {
@@ -147,27 +119,16 @@ export default function CatalogCard({
                 : {
                     base: "column-reverse",
                     md: "row-reverse"
-                }}>
-                <Center
-                    width={{
-                    base: "100%",
-                    md: "100%"
                 }}
-                    height="100%">
+                alignContent="center"
+                alignItems={"center"}>
 
-                    <SimpleGrid columns={4} height={'100%'} width="100%" spacing={"2.5vw"}>
+                {products
+                    ?.map((n, i) => <Product background={background} key={i} product={n.products_id}/>)
+}
 
-                        {
-                                products?.map((n, i) => <Product
-                                    color={colors[i % colors.length]}
-                                    key={i}
-                                    product={n.products_id}/>)
-                           }
+                <Category title={title} background={background} image={image}/>
 
-                        <Category title={title} underline={underline} image={image}/>
-                    </SimpleGrid>
-
-                </Center>
             </Flex>
         </Box>
     )

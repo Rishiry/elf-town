@@ -12,7 +12,11 @@ import {
     NumberIncrementStepper,
     NumberDecrementStepper,
     Button,
-    Text
+    Text,
+    VisuallyHidden,
+    border,
+    Tag,
+    Flex
 } from "@chakra-ui/react";
 import BounceWrapper from "components/bounceWrapper/bounceWrapper";
 import {useElf} from "lib/elf";
@@ -30,7 +34,13 @@ export default function Details({product}) {
             mt={{
             base: "2.5vh",
             md: "0"
-        }}>
+        }}
+        px={
+            {
+                base: "2.5vw",
+                lg: "2.5vw"
+            }
+        }>
 
             <VStack>
                 <Text
@@ -41,16 +51,13 @@ export default function Details({product}) {
                     {product.title}
                 </Text>
 
-                <Badge
-                    colorScheme="green"
-                    w="95px"
-                    h="28px"
-                    borderRadius="15px"
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="center">
-                    IN STOCK
-                </Badge>
+                <Flex flexDirection="row" gap={"1vw"} wrap="wrap" justifyContent={"center"}>
+                    <Tag colorScheme="green">In Stock</Tag>
+                    {product
+                        .tags
+                        .map(e => (
+                            <Tag key={e}>{e}</Tag>
+                        ))}</Flex>
                 <Center py={'2.5vh'}>
                     <VStack>
                         <Text color="gray.400" fontWeight="normal" fontSize="sm">
@@ -60,47 +67,54 @@ export default function Details({product}) {
                             color={useColorModeValue("gray.700", "white")}
                             fontWeight="bold"
                             fontSize="4xl">
-                            {elf
-                                .static
-                                .regions
-                                .filter(r => r.code == elf.session.activeRegion)[0]
-                                .currency_symbol}
-                            {product[
-                                elf
-                                    .static
-                                    .regions
-                                    .filter(r => r.code == elf.session.activeRegion)[0]
-                                    .currency_code
-                            ].toFixed(2)}
+                            {elf.session.activeRegion && !elf.session.loading && elf.session.activeRegionInfo
+                                ? <> {
+                                    elf.session.activeRegionInfo.currency_symbol
+                                }
+                            {
+                                product[elf.session.activeRegionInfo.currency_code].toFixed(2)
+                            } </>:<></>
+}
+
                         </Text>
+                        {elf
+                            .static
+                            .regions
+                            .map(e => <VisuallyHidden key={e.code}>
+                                <Text
+                                    color={useColorModeValue("gray.700", "white")}
+                                    fontWeight="bold"
+                                    fontSize="xl">{e.currency_symbol} {product[e.currency_code].toFixed(2)}</Text>
+                            </VisuallyHidden>)}
+
                     </VStack>
                 </Center>
 
-                <Box height={'25vh'} width="100%" py={'2.5vh'}>
-
-                    <SimpleGrid columns={4} height="100%" width="100%">
-                        <Box height={'10vh'} width="10vh" rounded="20px" py={'2.5vh'} bg="red.400"></Box>
-                        <Box height={'10vh'} width="10vh" rounded="20px" py={'2.5vh'} bg="blue.400"></Box>
-                        <Box height={'10vh'} width="10vh" rounded="20px" py={'2.5vh'} bg="green.400"></Box>
-                        <Box height={'10vh'} width="10vh" rounded="20px" py={'2.5vh'} bg="yellow.400"></Box>
-                    </SimpleGrid>
-
-                </Box>
+                <Box height={'25vh'} width="100%" py={'2.5vh'}></Box>
 
                 <HStack pt={'2.5vh'} spacing="2.5vw">
-                    <NumberInput maxW={"120px"} defaultValue={1} min={1}>
+                    <NumberInput maxW={"180px"} defaultValue={1} min={1}>
                         <NumberInputField
+                            borderColor={useColorModeValue("gray.50", "gray.700")}
+                            borderWidth="2px"
+                            _focus={{
+                            borderColor: useColorModeValue("gray.50", "gray.700")
+                        }}
+                            _hover={{
+                            borderColor: useColorModeValue("gray.50", "gray.700")
+                        }}
                             py={"30px"}
                             rounded={"20px"}
                             color={useColorModeValue("gray.700", "white")}
                             fontSize="2xl"
-                            fontWeight="bold" textAlign={"center"}/>
+                            fontWeight="bold"
+                            textAlign={"center"}/>
                         <NumberInputStepper
                             color={useColorModeValue("gray.700", "white")}
                             fontSize="2xl"
                             fontWeight="bold">
-                            <NumberIncrementStepper/>
-                            <NumberDecrementStepper/>
+                            <NumberIncrementStepper roundedTopRight="20px"/>
+                            <NumberDecrementStepper roundedBottomRight="20px"/>
                         </NumberInputStepper>
                     </NumberInput>
                     <BounceWrapper>

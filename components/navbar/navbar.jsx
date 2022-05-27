@@ -10,6 +10,7 @@ export default function Navbar() {
 
     return (
         <Flex
+            zIndex={99}
             position={'fixed'}
             top="16px"
             left="50%"

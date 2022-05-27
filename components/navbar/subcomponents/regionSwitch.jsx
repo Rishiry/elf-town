@@ -57,7 +57,10 @@ const RegionIconList = ({regions, activeRegion}) => {
     )
 }
 
-const ActiveRegionIcon = ({regions, activeRegion, listTrigger}) => {
+const ActiveRegionIcon = ({listTrigger}) => {
+
+    const elf = useElf()
+
     return (
         <BounceWrapper>
             <Flex
@@ -79,10 +82,12 @@ const ActiveRegionIcon = ({regions, activeRegion, listTrigger}) => {
                     : listTrigger.onOpen()
             }}>
 
-                <Image
-                    src={constructImageURL(regions.filter(e => e.code == activeRegion)[0].flag)}
+                {elf.session.activeRegionInfo?
+                    <Image
+                    src={constructImageURL(elf.session.activeRegionInfo.flag)}
                     width={"30px"}
-                    height={"30px"} alt={activeRegion}/>
+                    height={"30px"} alt={elf.session.activeRegion}/>:<></>
+                }
             </Flex>
         </BounceWrapper>
 
@@ -105,8 +110,6 @@ export default function RegionSwitch(props) {
             <VStack width={'100%'} spacing='0'>
 
                 <ActiveRegionIcon
-                    regions={elf.static.regions}
-                    activeRegion={elf.session.activeRegion}
                     listTrigger={{
                     isOpen,
                     onOpen,

@@ -8,11 +8,9 @@ import {
     Center,
     Spacer
 } from "@chakra-ui/react"
-import BounceWrapper from "components/bounceWrapper/bounceWrapper"
+
 import FreeDeliveryCard from "components/cards/freeDeliveryCard"
-import CloseButton from "components/cart/closeButton"
 import {useElf} from "lib/elf"
-import {IoClose} from "react-icons/io5"
 
 import CartTable from "./cartTable"
 
@@ -25,7 +23,7 @@ export default function CartOverlay() {
                 direction='bottom'
                 in={elf.session.cartOpen}
                 style={{
-                zIndex: 10
+                zIndex: 15
             }}
                 unmountOnExit>
                 <Box
@@ -40,8 +38,6 @@ export default function CartOverlay() {
                     filter={useColorModeValue("none", "drop-shadow(0px 7px 23px rgba(0, 0, 0, 0.05))")}
                     backdropFilter="blur(21px)"
                     height={'100vh'}>
-
-                    <CloseButton/>
 
                     <Center width={"100vw"} height={"100vh"}>
 

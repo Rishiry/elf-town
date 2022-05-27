@@ -7,7 +7,7 @@ import {
 import BounceWrapper from "components/bounceWrapper/bounceWrapper";
 import {useElf} from "lib/elf";
 
-import {IoCart} from 'react-icons/io5'
+import {IoCart, IoClose} from 'react-icons/io5'
 import CartOverlay from "sections/cart/cartOverlay";
 
 export default function Cart() {
@@ -41,9 +41,9 @@ return (
                     px="16px"
                     py="16px"
                     cursor={"pointer"}
-                    onClick={() => elf.session.setCartOpen(true)}>
+                    onClick={() => elf.session.setCartOpen(!elf.session.cartOpen)}>
                     <Icon
-                        as={IoCart}
+                        as={elf.session.cartOpen? IoClose: IoCart}
                         color={useColorModeValue("gray.700", "gray.200")}
                         w="30px"
                         h="30px"
