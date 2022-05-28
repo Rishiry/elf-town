@@ -123,8 +123,7 @@ export default function CatalogCard({title, image, order, background, products})
                 alignContent="center"
                 alignItems={"center"}>
 
-                {products
-                    ?.map((n, i) => <Product background={background} key={i} product={n.products_id}/>)
+                {products.map((n, i) => <>{n? <Product background={background} key={i} product={n.products_id} />:<></>}</>)
 }
 
                 <Category title={title} background={background} image={image}/>

@@ -40,8 +40,10 @@ export default function Christmas({collections}) {
                     base: "2.5vw",
                     md: "5vw"
                 }}
+                
                     height={{
                     base: "50vh",
+                    md: "80vh",
                     lg: "80vh"
                 }}
                     rounded="20px">
@@ -60,7 +62,7 @@ export default function Christmas({collections}) {
                                 Signature Collection
                             </Text>
                         </Badge>
-                        <Text color="#fff" fontSize={{base: "2xl", lg: "6xl"}} fontWeight="bold" mb="5vh" align={"center"}>
+                        <Text color="#fff" fontSize={{base: "4xl", lg: "6xl"}} fontWeight="bold" mb="5vh" align={"center"}>
                             CLASSIC<br/>CHRISTMAS
                         </Text>
                         <Button

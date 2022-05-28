@@ -6,6 +6,7 @@ import {
     Center,
     Text,
     useColorModeValue,
+    HStack,
 } from "@chakra-ui/react";
 import { constructImageURL } from "lib/helper";
 
@@ -91,6 +92,7 @@ export default function Welcome() {
             <Center height={"90%"} width="100%">
 
                 <VStack spacing={0} align='center'>
+                    
                     <Text
                         fontWeight={900}
                         fontSize="2xl"

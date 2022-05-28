@@ -3,7 +3,7 @@ import CatalogCard from "components/cards/catalogCard";
 import {constructImageURL} from "lib/helper";
 
 export default function Featured({collections}) {
-    console.log(collections)
+
     return (
         <Box w="100%">
             {collections.map((c, i) => <CatalogCard

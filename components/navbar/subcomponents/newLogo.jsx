@@ -5,7 +5,8 @@ import {
     SlideFade,
     useColorModeValue,
     VStack,
-    useDisclosure
+    useDisclosure,
+    Text
 } from "@chakra-ui/react";
 
 import {useElf} from "lib/elf";
@@ -32,7 +33,7 @@ const RegionIcon = ({flag, code}) => {
                 py="16px"
                 mx="auto"
                 my="10px"
-                width="max-content"
+                width="100%"
                 alignItems="center"
                 backdropFilter="blur(21px)"
                 cursor="pointer"
@@ -50,13 +51,13 @@ const RegionIconList = ({regions, activeRegion}) => {
     const display = regions.filter(e => (e.code != activeRegion));
 
     return (
-        <Box>
+        <Box width="100%" bg="red">
             {display.map(e => <RegionIcon code={e.code} flag={e.flag} key={e.code}/>)}
         </Box>
     )
 }
 
-const ActiveRegionIcon = ({listTrigger}) => {
+const LogoText = ({listTrigger}) => {
 
     const elf = useElf()
 
@@ -81,20 +82,34 @@ const ActiveRegionIcon = ({listTrigger}) => {
                     : listTrigger.onOpen()
             }}>
 
-                {elf.session.activeRegionInfo
-                    ? <Image
-                            src={constructImageURL(elf.session.activeRegionInfo.flag)}
-                            width={"30px"}
-                            height={"30px"}
-                            alt={elf.session.activeRegion}/>
-                    : <></>}
+           
+<Image
+                            mx={"4px"}
+                            src={constructImageURL('564fb50d-4a2b-4ede-8971-be76902db6bb')}
+                            height="30px"></Image>
+                        <Text
+                            mx={"4px"}
+                            fontSize="sm"
+                            mt="3px"
+                            fontWeight="black"
+                            display={{
+                            base: 'none',
+                            md: 'flex'
+                        }}
+                            lineHeight="100%"
+                            justifyContent="center"
+                            alignItems="center"
+                            casing={"uppercase"}
+                            color={useColorModeValue("gray.700", "gray.200")}>
+                            Elf Town
+                        </Text>
             </Flex>
         </BounceWrapper>
 
     )
 }
 
-export default function RegionSwitch(props) {
+export default function NewLogo() {
     const elf = useElf();
 
     const {isOpen, onOpen, onClose} = useDisclosure()
@@ -108,7 +123,7 @@ export default function RegionSwitch(props) {
             onMouseLeave={onClose}>
             <VStack width={'100%'} spacing='0'>
 
-                <ActiveRegionIcon
+                <LogoText
                     listTrigger={{
                     isOpen,
                     onOpen,

@@ -1,4 +1,5 @@
 import {Flex} from "@chakra-ui/react";
+import NewLogo from "./subcomponents/newLogo";
 import Cart from "./subcomponents/cart";
 import Logo from "./subcomponents/logo";
 import MainNav from "./subcomponents/main";
@@ -19,7 +20,7 @@ export default function Navbar() {
             maxW={{base: "90%", lg: "80%"}}
             height={"65px"}>
 
-        <Logo />
+        <NewLogo />
         <MainNav />
         <Search />
         <RegionSwitch />

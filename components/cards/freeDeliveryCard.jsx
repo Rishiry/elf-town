@@ -53,7 +53,7 @@ export default function FreeDeliveryCard() {
                             }
                         {
                             elf.session.activeRegionInfo.free_shipping_amount
-                        } < />:<></ >
+                        } </>:<></>
 }
 
                     </Text>

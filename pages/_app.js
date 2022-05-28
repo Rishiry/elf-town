@@ -27,7 +27,11 @@ MyApp.getInitialProps = async({req, res}) => {
             defaultRegion: regions
                 .data
                 .filter(r => r.default)[0]
-                .code
+                .code,
+            defaultCart: {
+                items: []
+            }
+
         }
     }
 }

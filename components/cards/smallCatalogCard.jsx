@@ -25,7 +25,8 @@ export default function SmallCatalogCard({name, image}) {
                     height={{
                     base: '20vh',
                     lg: "35vh"
-                }}>
+                }}
+                px="5%">
 
                     <Flex
                         gap={0}
