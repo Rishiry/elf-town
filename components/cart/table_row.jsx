@@ -21,8 +21,8 @@ import {IoCloseSharp} from "react-icons/io5";
 
 export default function CartTableRow({item, deleteFn}) {
 
-
     const elf = useElf()
+    
     return (
         <Tr>
         <Td minW="300px">

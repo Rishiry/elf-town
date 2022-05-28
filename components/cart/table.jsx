@@ -1,27 +1,13 @@
 import {
-    Box,
-    Flex,
-    Icon,
     Table,
-    Td,
     Th,
-    Text,
-    Image,
     Thead,
     Tr,
     TableContainer,
     Tbody,
-    useColorModeValue,
-    NumberInput,
-    NumberInputField,
-    NumberInputStepper,
-    NumberIncrementStepper,
-    NumberDecrementStepper
 } from "@chakra-ui/react";
 import { useElf } from "lib/elf";
-import {constructImageURL} from "lib/helper";
-import {} from "react-icons/bs";
-import {IoCloseSharp} from "react-icons/io5";
+
 import CartTableRow from "./table_row";
 
 export default function CartTable() {
