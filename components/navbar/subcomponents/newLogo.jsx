@@ -130,7 +130,7 @@ export default function NewLogo() {
                     onClose
                 }}/>
 
-                <SlideFade in={isOpen} unmountOnExit>
+                <SlideFade in={isOpen} unmountOnExit bg="pink">
                     <RegionIconList
                         regions={elf.static.regions}
                         activeRegion={elf.session.activeRegion}/>

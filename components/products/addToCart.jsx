@@ -25,14 +25,11 @@ export default function AddToCart({product}) {
     const [inCartIndex, setInCartIndex] = useState(-1)
     const [cartQuantity, setCartQuantity] = useState(0)
 
-    const changeQuantity = (value) => setQuantity(value)
-
-
     const elf = useElf()
 
 
     const add = () => {
-        console.log(added, inCartIndex, quantity)
+
         if (added && inCartIndex != -1) {
             () => {}
             console.log("FIRE2")
@@ -55,65 +52,50 @@ export default function AddToCart({product}) {
     }
 
     useEffect(() => {
-        if (elf.session.loading && elf
-            .session
-            .cart
-            .items == undefined) {
-            return;
-        }
+        if (elf.session.loading && elf.session.cart == undefined) {return;}
 
-        var inCart = elf
-            .session
-            .cart
-            .items
-            .find(x => x.product.id == product.id);
+        var inCart = elf.session.cart.items.find(x => x.product.id == product.id);
     
-        var index = elf
-        .session
-        .cart
-        .items
-        .indexOf(inCart)
+        var index = elf.session.cart.items.indexOf(inCart)
 
         setInCartIndex(index)
 
         console.log(elf.session.cart.items[index])
         
         if(index == -1){
-            setCartQuantity(
-                -1
-            )
+            setCartQuantity(0)
             setAdded(false)
         } else {
-            setCartQuantity(
-                elf.session.cart.items[index].quantity
-            )
+            setCartQuantity(elf.session.cart.items[index].quantity)
+            setQuantity(elf.session.cart.items[index].quantity)
         }
     
     }, [elf.session.cart])
 
     useEffect(() => {
-        if (elf.session.loading && elf
-            .session
-            .cart
-            .items == undefined) {
-            return;
-        }
+        if (elf.session.loading && elf.session.cart == undefined) {return;}
 
-        if(added) {
-            if (quantity != elf.session.cart.items[inCartIndex].quantity) {
+            if (added && quantity != cartQuantity) {
                 setAdded(false)
             }
-        }
+        
     }, [quantity])
 
+    useEffect(() => {
+        if(cartQuantity <= 0) {
+            setQuantity(1)
+        } else {
+            setQuantity(cartQuantity)
+        }
+    }, [cartQuantity])
 
     const {getInputProps, getIncrementButtonProps, getDecrementButtonProps} = useNumberInput({
         step: 1,
-        defaultValue: cartQuantity > 0? cartQuantity: 1,
+        value: added? cartQuantity: quantity,
         min: 1,
         max: product.stock,
         precision: 0,
-        onChange: changeQuantity
+        onChange: (v) => {setQuantity(v)}
     })
 
     return (
