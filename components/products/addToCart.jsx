@@ -55,7 +55,10 @@ export default function AddToCart({product}) {
     }
 
     useEffect(() => {
-        if (elf.session.loading) {
+        if (elf.session.loading && elf
+            .session
+            .cart
+            .items == undefined) {
             return;
         }
 
@@ -89,6 +92,13 @@ export default function AddToCart({product}) {
     }, [elf.session.cart])
 
     useEffect(() => {
+        if (elf.session.loading && elf
+            .session
+            .cart
+            .items == undefined) {
+            return;
+        }
+
         if(added) {
             if (quantity != elf.session.cart.items[inCartIndex].quantity) {
                 setAdded(false)
