@@ -54,6 +54,8 @@ export default function AddToCart({product}) {
     useEffect(() => {
         if (elf.session.loading && elf.session.cart == undefined) {return;}
 
+        console.log(elf.session)
+
         var inCart = elf.session.cart.items.find(x => x.product.id == product.id);
     
         var index = elf.session.cart.items.indexOf(inCart)
