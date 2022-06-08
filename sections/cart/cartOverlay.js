@@ -94,10 +94,10 @@ export default function CartOverlay() {
                             }}>
 
                                 <Flex width={'100%'} height="100%" flexDirection='column'>
-                                <FreeDeliveryCard/>
                                 
-                                    <Spacer/>
                                     <Checkout />
+                                    <Spacer/>
+                                    <FreeDeliveryCard/>
 
                                 </Flex>
                             </Box>

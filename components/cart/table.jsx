@@ -7,15 +7,17 @@ import {
     Tbody,
 } from "@chakra-ui/react";
 import { useElf } from "lib/elf";
+import TableCouponRow from "./tableCouponRow";
 
-import CartTableRow from "./table_row";
+import CartTableRow from "./tableRow";
+import TableShippingRow from "./tableShippingRow";
 
 export default function CartTable() {
 
     const elf = useElf();
 
     return (
-        <TableContainer my="5%" overflowY="auto" height="65%" mx="2.5vw">
+        <TableContainer my="5%" overflowY="auto" height="55%" mx="2.5vw">
             <Table variant='simple'>
                 <Thead>
                     <Tr>
@@ -26,9 +28,9 @@ export default function CartTable() {
                             Quantity
                         </Th>
                         <Th color="gray.400" fontSize="xs">
-                            Price
+                            Amount
                         </Th>
-                        <Th></Th>
+                        <Th>{''}</Th>
                     </Tr>
 
                 </Thead>
@@ -36,10 +38,12 @@ export default function CartTable() {
 
                     {elf.session.cart.items.length >=1? <>
                     {
-                        elf.session.cart.items.map((item, index) => <CartTableRow key={index} item={item} deleteFn={()=>elf.session.deleteCartItem(index)}/>)
+                        elf.session.cart.items.map((item, index) => <CartTableRow key={index} index={index} item={item} />)
                     }
                     </>:<></>}
 
+                    <TableShippingRow />
+                    <TableCouponRow />
                 </Tbody>
 
             </Table>

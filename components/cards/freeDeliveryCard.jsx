@@ -17,14 +17,15 @@ export default function FreeDeliveryCard() {
             flexDirection={{
             base: "column",
             md: "row"
-        }}>
+            }}
+        overflow="visible">
 
             <Center>
                 <VStack
                     spacing={0}
                     color="white"
                     mt={{
-                    base: '10vh',
+                    base: '7.5vh',
                     md: 0
                 }}>
                     <Text
@@ -54,7 +55,7 @@ export default function FreeDeliveryCard() {
                         {
                             elf.session.activeRegionInfo.free_shipping_amount
                         } </>:<></>
-}
+                        }
 
                     </Text>
 
@@ -64,11 +65,12 @@ export default function FreeDeliveryCard() {
             <Image
                 ml={"2.5vw"}
                 mt={{
-                base: '-10vh',
+                base: '-2.5vh',
                 md: 0
             }}
+                overflow="visible"
                 src={constructImageURL('4178dcd9-0b43-4674-9c0b-15bdacad4002')}
-                objectFit="cover"></Image>
+                objectFit="contain"></Image>
         </Flex>
 
     )

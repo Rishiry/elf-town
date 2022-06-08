@@ -17,7 +17,7 @@ import Tick from "./tick";
 export default function AddToCart({product}) {
 
     const [quantity,
-        setQuantity] = useState(1)
+        setQuantity] = useState(-1)
 
     const [added,
         setAdded] = useState(false)
@@ -32,10 +32,8 @@ export default function AddToCart({product}) {
 
         if (added && inCartIndex != -1) {
             () => {}
-            console.log("FIRE2")
 
         } else if (inCartIndex != -1 && !added) {
-            console.log("FIRE")
             elf
                 .session
                 .updateCartItem({
@@ -54,32 +52,24 @@ export default function AddToCart({product}) {
     useEffect(() => {
         if (elf.session.loading && elf.session.cart == undefined) {return;}
 
-        console.log(elf.session)
-
         var inCart = elf.session.cart.items.find(x => x.product.id == product.id);
     
         var index = elf.session.cart.items.indexOf(inCart)
 
         setInCartIndex(index)
 
-        console.log(elf.session.cart.items[index])
         
         if(index == -1){
             setCartQuantity(0)
             setAdded(false)
         } else {
             setCartQuantity(elf.session.cart.items[index].quantity)
-            setQuantity(elf.session.cart.items[index].quantity)
         }
-    
     }, [elf.session.cart])
 
     useEffect(() => {
         if (elf.session.loading && elf.session.cart == undefined) {return;}
-
-            if (added && quantity != cartQuantity) {
-                setAdded(false)
-            }
+        if (quantity != cartQuantity) { setAdded(false) }
         
     }, [quantity])
 
@@ -88,12 +78,13 @@ export default function AddToCart({product}) {
             setQuantity(1)
         } else {
             setQuantity(cartQuantity)
+            setAdded(true)
         }
     }, [cartQuantity])
 
     const {getInputProps, getIncrementButtonProps, getDecrementButtonProps} = useNumberInput({
         step: 1,
-        value: added? cartQuantity: quantity,
+        value: quantity == -1? 1: quantity,
         min: 1,
         max: product.stock,
         precision: 0,

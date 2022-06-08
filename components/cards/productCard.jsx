@@ -39,10 +39,7 @@ export default function Product({background, product}) {
                                     rounded={"20px"}
                                     py="5%"
                                     position="relative"
-                                    style={{
-                                    transition: 'all 0.3s ease',
-                                    'transition-delay': '0.3s'
-                                }}
+                                    transition={"all 0.3s ease"}
                                     _hover={{
                                     cursor: 'pointer',
                                     _after: {
@@ -80,7 +77,7 @@ export default function Product({background, product}) {
                                     'background-size': '200% 200%'
                                 }}>
                                     <Image
-                                        src={constructImageURL(product.display_image)}
+                                        src={constructImageURL(product.display_image + "?quality=70")}
                                         objectFit={'cover'}
                                         width='90%'
                                         height={{base: "55%", md: "20vw", lg: "55%"}}

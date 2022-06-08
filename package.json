@@ -13,6 +13,8 @@
     "@directus/sdk": "^9.11.1",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@stripe/react-stripe-js": "^1.8.1",
+    "@stripe/stripe-js": "^1.31.0",
     "cookies-next": "^2.0.4",
     "framer-motion": "^6.3.4",
     "next": "12.1.6",

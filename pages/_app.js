@@ -29,7 +29,8 @@ MyApp.getInitialProps = async({req, res}) => {
                 .filter(r => r.default)[0]
                 .code,
             defaultCart: {
-                items: []
+                items: [],
+                freeShipping: false
             }
 
         }

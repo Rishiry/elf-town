@@ -1,10 +1,13 @@
+import { Box } from '@chakra-ui/react'
 import {motion} from 'framer-motion'
-import {useState} from 'react'
 
 export default function BounceWrapper({children}) {
 
     return (
-        <motion.div
+        <Box
+        height={"100%"}
+        width="100%"
+        as={motion.div}
             whileHover={{
                 scale: 1.1
             }}
@@ -12,6 +15,6 @@ export default function BounceWrapper({children}) {
             scale: 0.9
         }}>
             {children}
-        </motion.div>
+        </Box>
     )
 }

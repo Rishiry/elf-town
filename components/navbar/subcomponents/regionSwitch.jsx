@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import {useElf} from "lib/elf";
-import {constructImageURL} from "lib/helper";
+import {constructIconImageURL} from "lib/helper";
 import {useEffect} from "react";
 import BounceWrapper from "../../bounceWrapper/bounceWrapper";
 
@@ -38,7 +38,7 @@ const RegionIcon = ({flag, code}) => {
                 cursor="pointer"
                 onClick={() => elf.session.setActiveRegion(code)}>
 
-                <Image src={constructImageURL(flag)} width={"30px"} height={"30px"} alt={code}/>
+                <Image src={constructIconImageURL(flag)} width={"30px"} height={"30px"} alt={code} priority={true}/>
 
             </Flex>
         </BounceWrapper>
@@ -83,7 +83,7 @@ const ActiveRegionIcon = ({listTrigger}) => {
 
                 {elf.session.activeRegionInfo
                     ? <Image
-                            src={constructImageURL(elf.session.activeRegionInfo.flag)}
+                            src={constructIconImageURL(elf.session.activeRegionInfo.flag)}
                             width={"30px"}
                             height={"30px"}
                             alt={elf.session.activeRegion}/>
