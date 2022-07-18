@@ -12,6 +12,7 @@ import {
 import {useElf} from "lib/elf";
 
 import {useState} from "react";
+import CountrySelector from "./countrySelector";
 
 export default function UserForm() {
     const elf = useElf()
@@ -221,44 +222,9 @@ export default function UserForm() {
                         }}/>
                     </Center>
                     <Spacer/>
-                        <Center width={"100%"}>
-                        <Center
-                        width={"100%"}
-                        h="50px"
-                        w="100%"
-                        p={"30px"}
-                        bg={'white'}
-                        border="solid 1px"
-                        borderColor="gray.200"
-                        placeholder={'Country'}
-                        _focus={{
-                        borderColor: "gray.200"
-                    }}
-                        _hover={{
-                        borderColor: "gray.200"
-                    }}
-                        rounded={"20px"}
-                        >
-                        <Select
-                            onChange={(e) => elf.session.setUserDetail('country', e.target.value)}
-                            name="country"
-                            borderColor="white"
-                            _focus={{
-                            borderColor: "white"
-                        }}
-                            _hover={{
-                            borderColor: "white"
-                        }}
-                        textAlign={"center"}
-                        fontWeight="bold">
-                            {elf
-                                .session
-                                .activeRegionInfo
-                                .countries
-                                .map(c => <option value={c.name}>{c.name}</option>)}
-                        </Select>
-                    </Center>
-                        </Center>
+
+                    <CountrySelector />
+                    
                 </Flex>
             </Flex>
         </FormControl>

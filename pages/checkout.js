@@ -6,7 +6,7 @@ import {
     Image,
     Input,
     Spacer,
-    Text,
+    Text
 } from "@chakra-ui/react";
 
 import {useState} from "react";
@@ -17,15 +17,10 @@ import BounceWrapper from "components/bounceWrapper/bounceWrapper";
 import GiftNote from "components/giftNote/giftNote";
 import UserForm from "components/checkout/userForm";
 
-
-
-
 export default function Checkout() {
 
-    const [input,
-        setInput] = useState('')
-
-    const handleInputChange = (e) => setInput(e.target.value)
+    const [loading,
+        setLoading] = useState('')
 
     return (
         <Box w="100%">
@@ -43,17 +38,15 @@ export default function Checkout() {
                 }}
                     gap="1.5vw"
                     height={"max-content"}>
-                 
-                 
-                    <UserForm />
 
+                    <UserForm/>
 
                     <Spacer/>
 
                     <Flex
                         direction={{
                         lg: "column",
-                        base: "row-reverse"
+                        base: "row"
                     }}
                         height={{
                         lg: 'maxz'
@@ -88,11 +81,18 @@ export default function Checkout() {
                                     width={"100%"}
                                     flexDirection="column"
                                     alignItems="center"
-                                    justifyContent={"center"}>
-                                    <Text textAlign="center" wordBreak={"break-word"}>Proceed to Payment</Text>
-                                    <Image
-                                        src={constructImageURL('32da8d75-14c4-43ec-a6ab-1ac366bb37f0')}
-                                        height="125px"/>
+                                    justifyContent={"center"}
+                                    onClick={()=>setLoading(!loading)}>
+                                    {loading
+                                        ? <Image
+                                                src={constructImageURL('8e6c684b-efc7-4994-82d8-2891605c1856')}
+                                                className="rotate"
+                                                width="17.5vh"/>
+                                        : <><Text textAlign="center" wordBreak={"break-word"} height="2.5vh">Proceed to Payment</Text> < Image
+                                    src = {
+                                        constructImageURL('32da8d75-14c4-43ec-a6ab-1ac366bb37f0')
+                                    }
+                                    height = "15vh" /></>}
 
                                 </Flex>
                             </BounceWrapper>

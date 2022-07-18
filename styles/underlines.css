@@ -19,7 +19,6 @@
             background-position: 0% 50%;
         }
     }
-    
 
     .checkmark {
   width: 1.5rem;
@@ -69,4 +68,23 @@
   100% {
     box-shadow: inset 0px 0px 0px 30px #68D391;
   }
+}
+
+.rotate {
+  -webkit-animation:spin 3s linear infinite;
+  -moz-animation:spin 3s linear infinite;
+  animation:spin 3s linear infinite;
+}
+
+@-moz-keyframes spin { 
+  100% { -moz-transform: rotate(360deg); } 
+}
+@-webkit-keyframes spin { 
+  100% { -webkit-transform: rotate(360deg); } 
+}
+@keyframes spin { 
+  100% { 
+      -webkit-transform: rotate(360deg); 
+      transform:rotate(360deg); 
+  } 
 }

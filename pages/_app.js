@@ -37,6 +37,7 @@ MyApp.getInitialProps = async({req, res}) => {
                     removeInvoice: false
                 },
                 userDetails: {
+                    email: '',
                     fname: '',
                     lname: '',
                     phone: '',

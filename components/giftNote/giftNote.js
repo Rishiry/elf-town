@@ -39,10 +39,10 @@ export default function GiftNote() {
                         flexDirection="column"
                         alignItems="center"
                         justifyContent={"center"}>
-                        <Text>Add Gift Note</Text>
+                        <Text height={"2.5vh"}>Add Gift Note</Text>
                         <Image
                             src={constructImageURL('ad44a5c6-a980-4199-bb7f-b94196d455d5')}
-                            height={"125px"}/>
+                            height={"15vh"}/>
 
                     </Flex>
                 </BounceWrapper>

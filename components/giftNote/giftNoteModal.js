@@ -78,7 +78,7 @@ export default function GiftNoteModal({control}) {
                             {elf
                                 .static
                                 .noteTypes
-                                .map((t, i) => <NoteType index={i} note={t}/>)
+                                .map((t, i) => <NoteType key={i} index={i} note={t}/>)
 }
 
                         </Stack>
@@ -115,6 +115,7 @@ export default function GiftNoteModal({control}) {
                                 </Text>
                                 <Flex>
                                 <Image
+                                    alt=""
                                     mx={"4px"}
                                     src={constructIconImageURL('564fb50d-4a2b-4ede-8971-be76902db6bb')}
                                     height="30px"></Image>
