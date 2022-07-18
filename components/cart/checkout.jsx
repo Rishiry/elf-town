@@ -10,15 +10,19 @@ import {
     Center
 } from "@chakra-ui/react";
 import BounceWrapper from "components/bounceWrapper/bounceWrapper";
-import { useElf } from "lib/elf";
-import { useState } from "react";
+import {useElf} from "lib/elf";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import {useState} from "react";
 
 export default function Checkout() {
 
     const elf = useElf()
-    
-    const [email, setEmail] = useState()
+    const router = useRouter()
 
+
+    const [email,
+        setEmail] = useState()
 
     return (
         <Flex
@@ -34,52 +38,61 @@ export default function Checkout() {
             alignItems={"center"}
             justifyContent="center"
             flexDirection={"column"}>
-         
-         <Flex width="100%" align={"center"} justifyContent="center" direction={"column"} gap="0.5vh">
-         <Text color={"gray.400"} fontSize="sm" fontWeight="medium" fontStyle={"italic"}>
-                        Your Email Address:
-                    </Text>
-         <Input
-                onChange={(e) => {setEmail(e.target.value)}}
-                textAlign={"center"}
-                fontWeight="bold"
-                bg={'white'}
-                rounded={"20px"}
-                borderColor="gray.200"
-                h="50px"
-                w="70%"
-                p={"30px"}
-                type="email"
-                placeholder={'Irriel@Elf.Town'}
-                _focus={{
-                    borderColor: "gray.200"
+
+            <Flex
+                width="100%"
+                align={"center"}
+                justifyContent="center"
+                direction={"column"}
+                gap="0.5vh">
+                <Text color={"gray.400"} fontSize="sm" fontWeight="medium" fontStyle={"italic"}>
+                    Your Email Address:
+                </Text>
+                <Input
+                    onChange={(e) => {
+                    setEmail(e.target.value)
                 }}
-                _hover={{
-                    borderColor: "gray.200"
-                }}
-                />
-            </Flex>
-            <Spacer />
-            <Center width="100%">
-            <BounceWrapper>
-                <Center
-                    cursor={"pointer"}
-                    variant="no-hover"
+                    textAlign={"center"}
+                    fontWeight="bold"
+                    bg={'white'}
                     rounded={"20px"}
-                    _focus={{
-                    border: 'none'
-                }}
-                    bg="linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)"
+                    borderColor="gray.200"
                     h="50px"
-                    w="100%"
+                    w="70%"
                     p={"30px"}
-                    color="#fff"
-                    fontSize="md"
-                    fontWeight="bold">
-                    PROCEED TO CHECKOUT
-                </Center>
+                    type="email"
+                    placeholder={'Irriel@Elf.Town'}
+                    _focus={{
+                    borderColor: "gray.200"
+                }}
+                    _hover={{
+                    borderColor: "gray.200"
+                }}/>
+            </Flex>
+            <Spacer/>
+                <Center width={"100%"} onClick={() => {router.push('/checkout').then(()=>elf.session.setCartOpen(false))}}>
+                <BounceWrapper>
+
+                    <Center
+                        cursor={"pointer"}
+                        variant="no-hover"
+                        rounded={"20px"}
+                        _focus={{
+                        border: 'none'
+                    }}
+                        bg="linear-gradient(81.62deg, #313860 2.25%, #151928 79.87%)"
+                        h="50px"
+                        w="70%"
+                        p={"30px"}
+                        color="#fff"
+                        fontSize="md"
+                        fontWeight="bold">
+                        PROCEED TO CHECKOUT
+                    </Center>
+
             </BounceWrapper>
-            </Center>
+                </Center>
+
         </Flex>
 
     )
