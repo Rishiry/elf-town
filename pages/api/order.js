@@ -17,6 +17,12 @@ export default async function handler(req, res) {
         'country'
     ]
 
+    const expectedOrderDetails = [
+        'region',
+        'discount_code'
+    ]
+
+
     const directus = new Directus(process.env.NEXT_PUBLIC_API_URL, {
         auth: {
             staticToken: process.env.STATIC_TOKEN
@@ -31,7 +37,7 @@ export default async function handler(req, res) {
         return;
     }
 
-    if (expectedUserDetails.some(k => query[k] == undefined)) {
+    if (expectedUserDetails.some(k => query[k] == undefined) && expectedOrderDetails.some(k => query[k] == undefined)) {
         res
             .status(400)
             .json({error: 'Missing Params'})
@@ -51,7 +57,8 @@ export default async function handler(req, res) {
             city: query.city,
             state: query.state,
             postal_code: query.postalCode,
-            country: query.country
+            country: query.country,
+            payment_status: "pending"
         });
 
     res

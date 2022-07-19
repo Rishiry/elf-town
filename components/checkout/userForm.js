@@ -16,10 +16,12 @@ import CountrySelector from "./countrySelector";
 
 export default function UserForm() {
     const elf = useElf()
-
+    
     const getVal = (key) => {
-        if (elf.session.cart && elf.session.cart.userDetails !== 'undefined') {
-            return elf.session.cart.userDetails[key]
+        if (elf.session.cart) {
+            if (elf.session.cart.userDetails[key] != 'undefined') {
+                return elf.session.cart.userDetails[key]
+            }
         } else {
             return ''
         }
